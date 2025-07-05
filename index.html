@@ -391,36 +391,150 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required>
-                            <span class="error-message" id="name-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" name="email" required>
-                            <span class="error-message" id="email-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">Service Needed</label>
-                            <select id="service" name="service" required>
-                                <option value="">Select a service</option>
-                                <option value="web-development">Web Development</option>
-                                <option value="smm">Social Media Marketing</option>
-                                <option value="ugc">UGC Video Creation</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <span class="error-message" id="service-error"></span>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                            <span class="error-message" id="message-error"></span>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+    <h2>Contact Us</h2>
+    <form
+        id="contactForm"
+        action="https://formspree.io/f/xovwzdqz"
+        method="POST"
+    >
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required>
+            <span class="error-message" id="name-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required>
+            <span class="error-message" id="email-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="web-development">Web Development</option>
+                <option value="smm">Social Media Marketing</option>
+                <option value="ugc">UGC Video Creation</option>
+                <option value="other">Other</option>
+            </select>
+            <span class="error-message" id="service-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+            <span class="error-message" id="message-error"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitButton">Send Message</button>
+        <div id="formStatus"></div>
+    </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const submitButton = document.getElementById('submitButton');
+    const formStatus = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission (stops redirect)
+
+        // Basic client-side validation
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        // 1. Show Loading State
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Sending... <span class="spinner"></span>';
+        submitButton.classList.add('loading');
+        formStatus.textContent = '';
+        formStatus.classList.remove('success', 'error'); // Remove previous status classes
+        formStatus.style.opacity = '0'; // Ensure hidden before animation
+
+        const formData = new FormData(form);
+
+        // Define a minimum loading time (e.g., 2000ms = 2 seconds)
+        const minLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
+
+        try {
+            const [response] = await Promise.all([
+                fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }),
+                minLoadingTime // Wait for this promise to resolve as well
+            ]);
+
+            if (response.ok) {
+                // 2. Show Success State
+                submitButton.innerHTML = 'Sent!';
+                submitButton.classList.remove('loading', 'error'); // Remove loading and error classes
+                submitButton.classList.add('success');
+                formStatus.textContent = 'Message sent successfully!';
+                formStatus.classList.add('success');
+                formStatus.style.opacity = '1'; // Trigger animation
+                form.reset(); // Clear the form fields
+                
+                setTimeout(() => {
+                    submitButton.innerHTML = 'Send Message';
+                    submitButton.classList.remove('success');
+                    submitButton.disabled = false;
+                    formStatus.textContent = '';
+                    formStatus.style.opacity = '0'; // Hide status message
+                    formStatus.classList.remove('success'); // Clean up class
+                }, 5000); // Display success message for 5 seconds
+            } else {
+                // 3. Show Error State
+                const data = await response.json();
+                let errorMessage = 'Oops! There was a problem submitting your form.';
+                if (Object.hasOwnProperty.call(data, 'errors')) {
+                    errorMessage = data.errors.map(error => error.message).join(', ');
+                } else if (Object.hasOwnProperty.call(data, 'error')) {
+                     errorMessage = data.error;
+                }
+                
+                formStatus.textContent = errorMessage;
+                submitButton.innerHTML = 'Try Again';
+                submitButton.classList.remove('loading', 'success'); // Remove loading and success classes
+                submitButton.classList.add('error');
+                formStatus.classList.add('error');
+                formStatus.style.opacity = '1'; // Trigger animation
+                submitButton.disabled = false;
+
+                setTimeout(() => {
+                    submitButton.innerHTML = 'Send Message';
+                    submitButton.classList.remove('error');
+                    formStatus.textContent = '';
+                    formStatus.style.opacity = '0'; // Hide status message
+                    formStatus.classList.remove('error'); // Clean up class
+                }, 5000); // Display error message for 5 seconds
+            }
+        } catch (error) {
+            console.error('Network error:', error);
+            formStatus.textContent = 'Oops! A network error occurred. Please try again.';
+            submitButton.innerHTML = 'Try Again';
+            submitButton.classList.remove('loading', 'success'); // Remove loading and success classes
+            submitButton.classList.add('error');
+            formStatus.classList.add('error');
+            formStatus.style.opacity = '1'; // Trigger animation
+            submitButton.disabled = false;
+
+            setTimeout(() => {
+                submitButton.innerHTML = 'Send Message';
+                submitButton.classList.remove('error');
+                formStatus.textContent = '';
+                formStatus.style.opacity = '0'; // Hide status message
+                formStatus.classList.remove('error'); // Clean up class
+            }, 5000); // Display error message for 5 seconds
+        }
+    });
+});
+</script>
+
+
             </div>
         </div>
     </section>
@@ -442,14 +556,14 @@
                                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
                             </svg>
                         </a>
-                        <a href="https://linkedin.com/in/alex" target="_blank" rel="noopener">
+                        <a href=" target="_blank" rel="noopener">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M16 8A6 6 0 0 1 22 14V21H18V14A2 2 0 0 0 16 12A2 2 0 0 0 14 14V21H10V9H14V11A6 6 0 0 1 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"/>
                                 <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/>
                             </svg>
                         </a>
-                        <a href="https://github.com/" target="_blank" rel="noopener">
+                        <a href="https://github.com/AVGe0rgiev23" target="_blank" rel="noopener">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15 22V18C15.1392 16.7473 14.78 15.4901 14 14.5C17 14.5 20 12.5 20 9C20.08 7.75 19.73 6.52 19 5.5C19.28 4.35 19.28 3.15 19 2C19 2 18 2 16 3.5C13.36 3 10.64 3 8 3.5C6 2 5 2 5 2C4.7 3.15 4.7 4.35 5 5.5C4.27 6.52 3.92 7.75 4 9C4 12.5 7 14.5 10 14.5C9.61 15.23 9.32 16.09 9.32 17V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M9 18C4.49 20 4 16 2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
