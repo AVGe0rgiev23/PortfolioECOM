@@ -111,4 +111,3 @@ Crafted with passion, precision, and a desire to create digital excellence by Al
 
 ---
 
-If you want, I can help you customize the contact info, your name, or add any other special sections! Just let me know.
