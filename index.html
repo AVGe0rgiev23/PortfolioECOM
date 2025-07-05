@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Portfolio - Web Developer & Content Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">Alex</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#hero" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="highlight">Alex</span>
+                    <br>
+                    <span class="typewriter" id="typewriter"></span>
+                </h1>
+                <p class="hero-subtitle">I help brands grow through code, content, and creativity.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('portfolio')">
+                        See My Work
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('contact')">
+                        Contact Me
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-graphic">
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                    <div class="floating-element"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Work</h2>
+            <p class="section-subtitle">Check out some of my recent projects</p>
+            <div class="portfolio-grid">
+                <div class="portfolio-card" data-category="web">
+                    <div class="card-image">
+                        <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=600" alt="E-commerce Website">
+                        <div class="card-overlay">
+                            <button class="view-btn" onclick="openModal('project1')">View Project</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">E-commerce Platform</h3>
+                        <p class="card-description">Modern online store with payment integration</p>
+                        <div class="card-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="smm">
+                    <div class="card-image">
+                        <img src="https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Social Media Campaign">
+                        <div class="card-overlay">
+                            <button class="view-btn" onclick="openModal('project2')">View Project</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Social Media Campaign</h3>
+                        <p class="card-description">Complete SMM strategy for tech startup</p>
+                        <div class="card-tags">
+                            <span class="tag">Strategy</span>
+                            <span class="tag">Content</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="ugc">
+                    <div class="card-image">
+                        <img src="https://images.pexels.com/photos/3206079/pexels-photo-3206079.jpeg?auto=compress&cs=tinysrgb&w=600" alt="UGC Video Content">
+                        <div class="card-overlay">
+                            <button class="view-btn" onclick="openModal('project3')">View Project</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">UGC Video Series</h3>
+                        <p class="card-description">Authentic product reviews and tutorials</p>
+                        <div class="card-tags">
+                            <span class="tag">Video</span>
+                            <span class="tag">Editing</span>
+                            <span class="tag">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="web">
+                    <div class="card-image">
+                        <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Portfolio Website">
+                        <div class="card-overlay">
+                            <button class="view-btn" onclick="openModal('project4')">View Project</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Creative Portfolio</h3>
+                        <p class="card-description">Responsive portfolio for digital artist</p>
+                        <div class="card-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">Animation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="web">
+                    <div class="card-image">
+                        <img src="https://images.pexels.com/photos/160107/pexels-photo-160107.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Business Website">
+                        <div class="card-overlay">
+                            <button class="view-btn" onclick="openModal('project5')">View Project</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Business Landing Page</h3>
+                        <p class="card-description">High-converting landing page for SaaS</p>
+                        <div class="card-tags">
+                            <span class="tag">Landing</span>
+                            <span class="tag">CRO</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card" data-category="ugc">
+                    <div class="card-image">
+                        <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Brand Content">
+                        <div class="card-overlay">
+                            <button class="view-btn" onclick="openModal('project6')">View Project</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Brand Content Creation</h3>
+                        <p class="card-description">Content strategy for lifestyle brand</p>
+                        <div class="card-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Content</span>
+                            <span class="tag">Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <p class="section-subtitle">What I can do for you</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 20L14 20C14 21.1046 13.1046 22 12 22C10.8954 22 10 21.1046 10 20Z" fill="currentColor"/>
+                            <path d="M4 16H20V18H4V16Z" fill="currentColor"/>
+                            <path d="M3 4H21V14H3V4Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Web Development</h3>
+                    <p class="service-description">Custom websites and web applications built with modern technologies</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Responsive Design</li>
+                            <li>Modern JavaScript</li>
+                            <li>Fast Performance</li>
+                            <li>SEO Optimized</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">Starting from <span class="price">150 BGN</span></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 10L12 15L17 10H7Z" fill="currentColor"/>
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">Social Media Marketing</h3>
+                    <p class="service-description">Complete SMM strategies to grow your brand and engage your audience</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Content Planning</li>
+                            <li>Post Scheduling</li>
+                            <li>Analytics Reports</li>
+                            <li>Growth Strategy</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">Weekly packages <span class="price">from 100 BGN</span></div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 5V19L13 14.5L18 19V5H8Z" fill="currentColor"/>
+                            <path d="M6 3H20V21L13 16L6 21V3Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-title">UGC Video Creation</h3>
+                    <p class="service-description">Authentic user-generated content that converts viewers into customers</p>
+                    <div class="service-features">
+                        <ul>
+                            <li>Product Reviews</li>
+                            <li>Tutorials</li>
+                            <li>Unboxing Videos</li>
+                            <li>Professional Editing</li>
+                        </ul>
+                    </div>
+                    <div class="service-price">Per video <span class="price">from 30 BGN</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="about-description">
+                        I'm a high school student specializing in AI and web development, with a passion for building smart, stylish digital experiences. I combine technical skills with creative thinking to deliver solutions that not only work perfectly but also look amazing.
+                    </p>
+                    <p class="about-description">
+                        When I'm not coding, you'll find me creating content, analyzing social media trends, or exploring the latest in AI technology. I believe in the power of authentic content and clean code to drive real business results.
+                    </p>
+                    <div class="skills-section">
+                        <h3>Skills & Technologies</h3>
+                        <div class="skills-grid" id="skills-grid">
+                            <div class="skill-tag">JavaScript</div>
+                            <div class="skill-tag">HTML5</div>
+                            <div class="skill-tag">CSS3</div>
+                            <div class="skill-tag">React</div>
+                            <div class="skill-tag">Node.js</div>
+                            <div class="skill-tag">Adobe Creative Suite</div>
+                            <div class="skill-tag">Canva</div>
+                            <div class="skill-tag">ChatGPT</div>
+                            <div class="skill-tag">Social Media</div>
+                            <div class="skill-tag">Video Editing</div>
+                            <div class="skill-tag">SEO</div>
+                            <div class="skill-tag">Analytics</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="profile-card">
+                        <img src="./assets/ME1.jpg" alt="Alex - Web Developer" class="profile-img">
+                        <div class="profile-info">
+                            <h3>Alex</h3>
+                            <p>Full-Stack Developer & Content Creator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <p class="section-subtitle">What people say about my work</p>
+            <div class="testimonials-carousel">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "Alex delivered an outstanding website for our startup. The design is modern, fast, and perfectly captures our brand. His attention to detail and technical expertise exceeded our expectations."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Maria Dimitrova</h4>
+                                <p>CEO, TechStart Bulgaria</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "Working with Alex on our social media strategy was a game-changer. Our engagement increased by 300% in just two months. His content creation skills are exceptional."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Stefan Petrov</h4>
+                                <p>Marketing Director, Creative Agency</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <p class="testimonial-text">
+                            "The UGC videos Alex created for our product launch were authentic and engaging. They significantly boosted our conversion rates and helped us connect with our audience."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Elena Ivanova</h4>
+                                <p>Brand Manager, Fashion Forward</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Work Together</h2>
+            <p class="section-subtitle">Ready to start your next project?</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>I'm always excited to work on new projects and help businesses grow. Whether you need a website, social media strategy, or content creation, let's discuss how we can work together.</p>
+                    <div class="contact-methods">
+                        <a href="mailto:alex@example.com" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            alex@example.com
+                        </a>
+                        <a href="https://www.instagram.com/georgiewv777/?hl=en" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="currentColor" stroke-width="2"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            georgiewv777
+                        </a>
+                        <a href="https://web.whatsapp.com/" class="contact-method">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 11.5A8.38 8.38 0 0 1 12.62 20A8.38 8.38 0 0 1 5.5 17L2 22L7 18.5A8.38 8.38 0 0 1 4 12A8.5 8.5 0 1 1 21 11.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="error-message" id="name-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="email-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="smm">Social Media Marketing</option>
+                                <option value="ugc">UGC Video Creation</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="error-message" id="service-error"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <span class="error-message" id="message-error"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Alex</h3>
+                    <p>Building the future, one project at a time.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/georgiewv777/?hl=en" target="_blank" rel="noopener">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" stroke="currentColor" stroke-width="2"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com/in/alex" target="_blank" rel="noopener">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8A6 6 0 0 1 22 14V21H18V14A2 2 0 0 0 16 12A2 2 0 0 0 14 14V21H10V9H14V11A6 6 0 0 1 16 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/" target="_blank" rel="noopener">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 22V18C15.1392 16.7473 14.78 15.4901 14 14.5C17 14.5 20 12.5 20 9C20.08 7.75 19.73 6.52 19 5.5C19.28 4.35 19.28 3.15 19 2C19 2 18 2 16 3.5C13.36 3 10.64 3 8 3.5C6 2 5 2 5 2C4.7 3.15 4.7 4.35 5 5.5C4.27 6.52 3.92 7.75 4 9C4 12.5 7 14.5 10 14.5C9.61 15.23 9.32 16.09 9.32 17V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 18C4.49 20 4 16 2 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alex. Built with ❤️ and lots of coffee.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 15L12 9L6 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
